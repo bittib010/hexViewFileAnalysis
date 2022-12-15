@@ -27,8 +27,8 @@
         <div class="container text-center">
             <div class="col">
                 <div class="text-center">
-                    <h1>Hex view with information</h1>
-                    <p>Click any of the numbers.</p>
+                    <h1>JPG file-format</h1>
+                    <p>Click the colored hex-sequence to get corresponsing data related to the sequence. (The with option seletion does not work at the moment.) JPG is an image format. </p>
                 </div>
               </div>
 
@@ -44,7 +44,6 @@
               </div>
 
               <div class="col">
-                <button onclick="showInfo()">Set width</button>
               </div>
             </div>
           </div>
@@ -61,14 +60,16 @@
                     [12, 15, "dasm8cc8n", "rgb(0,d,1,.5)"],
                     [16, 21, "haushuahhuauhahuh", "rgb(238, 130, 238, 0.5)"],
                     [22, 25, "dms090a9sidm"],
-                    [26, 28, "d88ndnd88nd8n8nd8"],
+                    [26, 28, "d88ndnd88nd8n8nd8 adsjoijs c,xc jdoaisjd asoijoiasjd8wjdoajd sadjsd aoisjd asoidjs8djs8jc98sjc sczxicjoicjzx ocisjf0ew8jfafjodhsnduvhsv o<p> test </p>"],
                     [29, 30, "thirty maffakas"]
                     ];
                     
                     const lineshift = parseInt(document.getElementById("hexWidth").value);
 
-                    const hexGrid = new HexGrid(hexNums, lineshift, indexInfo);
+                    const hexGrid = new HexGrid(hexNums, lineshift, indexInfo, hexNums);
                     hexGrid.render();
+
+                    
 
                     function showInfo(index) {
                         hexGrid.showInfo(index);

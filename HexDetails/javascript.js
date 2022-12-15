@@ -1,8 +1,9 @@
 class HexGrid {
-    constructor(hexNums, lineshift, indexInfo) {
+    constructor(hexNums, lineshift, indexInfo, ASCIIHex) {
         this.hexNums = hexNums;
         this.lineshift = lineshift;
         this.indexInfo = indexInfo;
+        this.ASCIIHex = ASCIIHex;
     }
 
     showInfo(index) {
@@ -12,8 +13,8 @@ class HexGrid {
                 document.getElementById('info-frame').innerHTML = this.indexInfo[i][2];
                 /*/ Set the background color of the clicked hex code
                 document.getElementById(index).style.backgroundColor = this.indexInfo[i][3];*/
-                var setClass = getElementById('info-frame')[0];
-                setClass.setAttribute('class', 'col-2');
+                //var setClass = getElementById('info-frame')[0];
+                //setClass.setAttribute('class', 'col-3');
                 break;
             }
         }
@@ -23,6 +24,46 @@ class HexGrid {
 
     render() {
         this.hexNums = this.hexNums.split(" ");
+
+        /* Beginning ASCII */
+        var ASCIITable = ' !"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~';
+
+        function hex2a(hexx) {
+            var hex = hexx.toString();//force conversion
+            var str = '';
+            for (var i = 0; i < hex.length; i += 2 )
+                if (ASCIITable.includes(String.fromCharCode(parseInt(hex.substr(i, 2), 16)))){
+                str += String.fromCharCode(parseInt(hex.substr(i, 2), 16));
+                } else{
+                    str += "."
+                }
+            return str;
+        }
+        this.ASCIIHex = this.ASCIIHex.split(" ");
+
+        document.write('<table class="col-2">');
+        for (let i = 0; i < this.ASCIIHex.length; i += this.lineshift) {
+            document.write('<tr class="table-light">');
+            for (let j = i; j < i + this.lineshift; j++) {
+                if (this.ASCIIHex[j] == null) {
+                    this.ASCIIHex[j] = "";
+                }
+                let bgColor = "#fff"; // default color
+                // Check if the index has a color in the indexInfo
+                for (let k = 0; k < this.indexInfo.length; k++) {
+                    if (j >= this.indexInfo[k][0] && j <= this.indexInfo[k][1]) {
+                        bgColor = this.indexInfo[k][3];
+                        break;
+                    }
+                }
+                document.write(
+                    '<td onclick="showInfo(' + j + ')" id="' + j + '" style="background-color: ' + bgColor + '">' + this.ASCIIHex[j] + "</td>"
+                );
+            }
+            document.write("</tr>");
+        }
+        document.write("</table>");
+         /* END*/
 
         document.write('<table class="col-1">');
         for (let i = 0; i < this.hexNums.length; i += this.lineshift) {
@@ -40,16 +81,19 @@ class HexGrid {
                     }
                 }
                 document.write(
-                    '<td onclick="showInfo(' + j + ')" id="' + j + '" style="background-color: ' + bgColor + '">' + this.hexNums[j] + "</td>"
+                    '<td onclick="showInfo(' + j + ')" id="' + j + '" style="background-color: ' + bgColor + '">' + hex2a(this.hexNums[j]) + "</td>"
                 );
             }
             document.write("</tr>");
         }
         document.write("</table>");
+        
 
         // Add an empty element where the info will be displayed
         document.write('<div id="info-frame" class="col"></div>');
     }
+
+   
 }
 
 /* Get index of the last clicked button
@@ -145,7 +189,7 @@ document.addEventListener("keyup", function (e) {
                 lowIndex = temp;
             }
             console.log("High Index: " + highIndex + "\nLow Index: " + lowIndex);
-
+            alert("High Index: " + highIndex + "\nLow Index: " + lowIndex);
 
 
         }
