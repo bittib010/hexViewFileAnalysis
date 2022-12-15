@@ -19,34 +19,51 @@
 
     </head>
     <body>
-
-        <!--button id="my-button">Click to get index of last clicked hex</button-->
-        
-        
-
         <div class="container text-center">
             <div class="col">
                 <div class="text-center">
                     <h1>JPG file-format</h1>
-                    <p>Click the colored hex-sequence to get corresponsing data related to the sequence. (The with option seletion does not work at the moment.) JPG is an image format. </p>
+                    <p>Click the colored hex-sequence to get corresponsing data
+                        related to the sequence. (The width option seletion does
+                        not work at the moment.) Mark a sequence inside the hex
+                        table and press SHIFT to get the corresponding index of
+                        the first and last marked. JPG is an image format. </p>
                 </div>
-              </div>
-
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
-              <div class="col">
-                <form action="">
-                    <select id="hexWidth">
-                        <option value="8">8</option>
-                        <option value="16">16</option>
-                        <option value="32">32</option>
-                    </select>
-                </form>
-              </div>
-
-              <div class="col">
-              </div>
+                <div id="popup">
+                    <div class="popup-inner">
+                        <div class="popup-content">
+                            There are a variety of JPG files depending on where
+                            it has been created. You may see files from Paint, a
+                            Canon Ixus camera or any other image manipulation
+                            software. These are mostly all considered to be JPG
+                            file formats, but they are also somewhat differnet.
+                            They store different kind of data.
+                        </div>
+                        <button class="popup-close-button"
+                            onclick="document.getElementById('popup').style.display=
+                            'none'">&times;</button>
+                    </div>
+                </div>
+                <div>
+                    <button class="popup-trigger"
+                        onclick="document.getElementById('popup').style.display=
+                        'block'">About JPG</button>
+                </div>
+                <div>
+                    <p>Choose width:</p>
+                </div>
+                <div>
+                    <form action="">
+                        <select id="hexWidth"
+                            onchange="hexGrid.updateLineshift(value)">
+                            <option value="16">16</option>
+                            <option value="8">8</option> 
+                            <option value="32">32</option>
+                        </select>
+                    </form>
+                </div>
             </div>
-          </div>
+        </div>
         <div class="container">
             <div class="row">
                 <script>
@@ -64,18 +81,23 @@
                     [29, 30, "thirty maffakas"]
                     ];
                     
-                    const lineshift = parseInt(document.getElementById("hexWidth").value);
+                    var lineshift = parseInt(document.getElementById("hexWidth").value);
 
                     const hexGrid = new HexGrid(hexNums, lineshift, indexInfo, hexNums);
                     hexGrid.render();
 
-                    
+                    function updateWidth(hexNums, value, indexInfo, hexNums){
+                        HexGrid(hexNums, value, indexInfo, hexNums);
+                        hexGrid.render();
+                    }
 
                     function showInfo(index) {
                         hexGrid.showInfo(index);
                         const lineshift = parseInt(document.getElementById("hexWidth").value);
 
                     }
+
+                    
 
 </script>
             </div>
