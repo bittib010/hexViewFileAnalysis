@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>JPG File Analysis</title>
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+            crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="stylesheet.css">
+
+        <!-- JavaScript Bundle with Popper -->
+
+        <script src="javascript.js"></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+            crossorigin="anonymous"></script>
+
+    </head>
+    <body>
+        <div class="container-xxl text-center" id="container-full">
+            <div class="col">
+                <div class="text-center">
+                    <h1>JPG file-format</h1>
+                    <p>Click the colored hex-sequence to get corresponsing data
+                        related to the sequence. (The width option seletion does
+                        not work at the moment.) Mark a sequence inside the hex
+                        table and press SHIFT to get the corresponding index of
+                        the first and last marked(may be a little buggy
+                        sometimes). </p>
+                </div>
+                <div id="popup">
+                    <div class="popup-inner">
+                        <div class="popup-content">
+                            The file uses the JPEG File Interchange Format
+                            (JFIF). JFIF is the most common format for JPEG
+                            files and is used for storing digital photographs.
+                            It is based on the JPEG standard and specifies
+                            additional rules for organizing and encoding image
+                            data in a JPEG file. The JPEG standard uses "lossy
+                            compression" which is also reffered to as
+                            "irreversible compression". Which means that it uses
+                            inexact approximations and partial data discarding
+                            to represent the content. Lossy compression is a
+                            technique that is used to reduce the data size for
+                            storing, handling, and transmitting content. (The
+                            opposite would be lossless data compression). The
+                            most widely used lossy compression algorithm is the
+                            "discrete cosine transform" (DCT) and is most often
+                            used on multiedia data. There are two basic lossy
+                            compression schemes:
+                            <ul><li>Lossy Transform codecs: samples of picture
+                                    or sound are taken, chopped into small
+                                    segments, transformed into a new basis
+                                    space, and quantized. The resulting
+                                    quantized values are then entropy coded</li>
+                                <li>Lossy Predictive codecs: previous and/or
+                                    subsequent data is used to predict the
+                                    current sound sample or image frame. The
+                                    error between the predicted data and the
+                                    real data, together with any extra
+                                    information needed to reproduce the
+                                    prediction is then quantized and coded</li></ul>
+                            There are a variety of JPG files depending on where
+                            it has been created. JPG/JPEG is short for "Joint
+                            Photographic Experts Group" and is basically a kind
+                            of algortihm that compresses images. You may see
+                            files from Paint, a Canon Ixus camera or any other
+                            image manipulation
+                            software. These are mostly all considered to be JPG
+                            file formats, but they are also somewhat differnet.
+                            They store different kind of data.
+                            The JPG/JPEG file format does not have a
+                            length-of-file sequence embedded. Which means that
+                            we need to look for the footer in order to find the
+                            end of the image.
+                            <br>
+                            The image used in this example was generated with
+                            Paint in Windows 16th of December 2022.
+
+                            <br>
+                            Content from EXIFTool:<pre>
+                            ExifTool Version Number         : 12.52
+File Name                       : Untitled.jpg
+Directory                       : C:/Users/AdrianKydlandSkaftun/OneDrive - Amesto/Desktop
+File Size                       : 8.7 kB
+File Modification Date/Time     : 2022:12:16 00:03:36+01:00
+File Access Date/Time           : 2022:12:19 16:20:18+01:00
+File Creation Date/Time         : 2022:12:13 23:53:55+01:00
+File Permissions                : -rw-rw-rw-
+File Type                       : JPEG
+File Type Extension             : jpg
+MIME Type                       : image/jpeg
+JFIF Version                    : 1.01
+Resolution Unit                 : inches
+X Resolution                    : 144
+Y Resolution                    : 144
+Exif Byte Order                 : Big-endian (Motorola, MM)
+Orientation                     : Horizontal (normal)
+Image Width                     : 240
+Image Height                    : 69
+Encoding Process                : Baseline DCT, Huffman coding
+Bits Per Sample                 : 8
+Color Components                : 3
+Y Cb Cr Sub Sampling            : YCbCr4:2:0 (2 2)
+Image Size                      : 240x69
+Megapixels                      : 0.017</pre>
+                            Tools:
+                            <table>
+                                <tr>
+                                    <th>Tool</th>
+                                    <th>Description</th>
+                                    <th>Link</th>
+                                </tr>
+                                <tr>
+                                    <td>dasd</td>
+                                    <td>jsaoi</td>
+                                    <td>jsaoi</td>
+
+                                </tr>
+                                <tr>
+                                    <td>da sd</td>
+                                    <td>jsaoi</td>
+                                </tr>
+                            </table>
+
+                            <h3>Resources:</h3>
+                            <ul>
+                                <li>https://en.m.wikipedia.org/wiki/Lossy_compression</li>
+                                <li>http://www.martinreddy.net/gfx/2d/JPEG.txt</li>
+                                <li>chrome-extension://efaidnbmnnnibpcajpcglclefindmkaj/https://www.w3.org/Graphics/JPEG/jfif.pdf</li>
+                            </ul>
+                        </div>
+                        <button class="popup-close-button"
+                            onclick="document.getElementById('popup').style.display=
+                            'none'">&times;</button>
+                    </div>
+                </div>
+                <div>
+                    <button class="popup-trigger"
+                        onclick="document.getElementById('popup').style.display=
+                        'block'">About JPG</button>
+                </div>
+                <div>
+                    <p>Choose width:</p>
+                </div>
+                <div>
+                    <form action="">
+                        <select id="hexWidth"
+                            onchange="hexGrid.updateLineshift(value)">
+                            <option value="16">16</option>
+                            <option value="8">8</option>
+                            <option value="32">32</option>
+                        </select>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="container-xl">
+            <div class="row" id="tableBoss">
+                <script>
+                    const hexNums = "FF D8 FF E0 00 10 4A 46 49 46 00 01 01 01 00 90 00 90 00 00 FF DB 00 43 00 02 01 01 02 01 01 02 02 02 02 02 02 02 02 03 05 03 03 03 03 03 06 04 04 03 05 07 06 07 07 07 06 07 07 08 09 0B 09 08 08 0A 08 07 07 0A 0D 0A 0A 0B 0C 0C 0C 0C 07 09 0E 0F 0D 0C 0E 0B 0C 0C 0C FF DB 00 43 01 02 02 02 03 03 03 06 03 03 06 0C 08 07 08 0C 0C 0C 0C 0C 0C 0C 0C 0C 0C 0C 0C 0C 0C 0C 0C 0C 0C 0C 0C 0C 0C 0C 0C 0C 0C 0C 0C 0C 0C 0C 0C 0C 0C 0C 0C 0C 0C 0C 0C 0C 0C 0C 0C 0C 0C 0C 0C 0C 0C FF C0 00 11 08 00 01 00 01 03 01 22 00 02 11 01 03 11 01 FF C4 00 1F 00 00 01 05 01 01 01 01 01 01 00 00 00 00 00 00 00 00 01 02 03 04 05 06 07 08 09 0A 0B FF C4 00 B5 10 00 02 01 03 03 02 04 03 05 05 04 04 00 00 01 7D 01 02 03 00 04 11 05 12 21 31 41 06 13 51 61 07 22 71 14 32 81 91 A1 08 23 42 B1 C1 15 52 D1 F0 24 33 62 72 82 09 0A 16 17 18 19 1A 25 26 27 28 29 2A 34 35 36 37 38 39 3A 43 44 45 46 47 48 49 4A 53 54 55 56 57 58 59 5A 63 64 65 66 67 68 69 6A 73 74 75 76 77 78 79 7A 83 84 85 86 87 88 89 8A 92 93 94 95 96 97 98 99 9A A2 A3 A4 A5 A6 A7 A8 A9 AA B2 B3 B4 B5 B6 B7 B8 B9 BA C2 C3 C4 C5 C6 C7 C8 C9 CA D2 D3 D4 D5 D6 D7 D8 D9 DA E1 E2 E3 E4 E5 E6 E7 E8 E9 EA F1 F2 F3 F4 F5 F6 F7 F8 F9 FA FF C4 00 1F 01 00 03 01 01 01 01 01 01 01 01 01 00 00 00 00 00 00 01 02 03 04 05 06 07 08 09 0A 0B FF C4 00 B5 11 00 02 01 02 04 04 03 04 07 05 04 04 00 01 02 77 00 01 02 03 11 04 05 21 31 06 12 41 51 07 61 71 13 22 32 81 08 14 42 91 A1 B1 C1 09 23 33 52 F0 15 62 72 D1 0A 16 24 34 E1 25 F1 17 18 19 1A 26 27 28 29 2A 35 36 37 38 39 3A 43 44 45 46 47 48 49 4A 53 54 55 56 57 58 59 5A 63 64 65 66 67 68 69 6A 73 74 75 76 77 78 79 7A 82 83 84 85 86 87 88 89 8A 92 93 94 95 96 97 98 99 9A A2 A3 A4 A5 A6 A7 A8 A9 AA B2 B3 B4 B5 B6 B7 B8 B9 BA C2 C3 C4 C5 C6 C7 C8 C9 CA D2 D3 D4 D5 D6 D7 D8 D9 DA E2 E3 E4 E5 E6 E7 E8 E9 EA F2 F3 F4 F5 F6 F7 F8 F9 FA FF DA 00 0C 03 01 00 02 11 03 11 00 3F 00 FD FC A2 8A 28 03 FF D9"
+
+                    /** const varName = [startIndex, endIndex, "Information", "rgba() for specific value, nothing for default white or "random_rgba()" for random. **/
+                    function random_rgba() {
+            var o = Math.round, r = Math.random, s = 255;
+            return 'rgba(' + o(r() * s) + ',' + o(r() * s) + ',' + o(r() * s) + ',' + (0.2 + (r() * 0.3)).toFixed(1) + ')';
+          }
+                    const indexInfo = [
+                        [0, 1, "<ul><li>Length: 2 bytes</li></ul> <br>JPG images always start with the byte sequence 'FFD8' (in ASCII) it defines the start of image (SOI). <br> You can see that the first four bytes has the 0xFFD8FFE0 which basically is the APP0 marker. A APP1 marker would be 0xFFD8FFE1.", random_rgba()],
+                        [2, 3, "<ul><li>Length: 2 bytes</li></ul> <br>Application Use Marker (APP0 Marker). This is the identifier. This zero terminated string (“JFIF”) uniquely identifies this APP0 marker.  This string shall have zero parity (bit 7=0).", random_rgba()],
+                        [4, 5, "<ul><li>Length: 2 bytes</li></ul> <br>Length of APP0 Field", random_rgba()],
+                        [6, 9, "<ul><li>Length: 5 bytes, but may vary</li></ul> <br>JFIF (zero terminated) Id string.", random_rgba()],
+                        [10, 11, "<ul><li>Length: 2 bytes</li></ul> <br>'JFIF' Format Revision. In other words, this is the version. The major version equals the most significant byte and the minor version equals the least significant byte. Which means that 0x0001 is version number 1.00.", random_rgba()],
+                        [13, 13, "<ul><li>Length: 1 bytes</li></ul> <br> Units for the X and Y densities. <br>units = 0: no units, X and Y specify the pixel aspect ratio <br>units = 1:  X and Y are dots per inch <br>units = 2:  X and Y are dots per cm", random_rgba()],
+                        [14, 15, "<ul><li>Length: 2 bytes</li><li>\
+                                0x0090 is 144 in decimal.</ul>\
+                                This is the ", random_rgba()],
+                        [16, 17, "<ul><li>Length: 2 bytes</li>\
+                                <li>0x0090 is 144 in decimal.</ul>", random_rgba()],
+                        [18, 22, "Units used for Resolution", random_rgba()],
+                        [25, 26, "Horizontal Resolution", random_rgba()],
+                        [27, 28, "Vertical Resolution", random_rgba()],
+                        [29, 29, "Horizontal Pixel Count", random_rgba()],
+                        [30, 30, "Vertical Pixel Count", random_rgba()],
+                        [56, 57, "Quantization table?", random_rgba()],
+                        [194, 195, "Start of Frame (SOF)???", random_rgba()],
+                        [213, 214, "Placeholder, is this the Huffman table?", random_rgba()],
+                        [246, 247, "Placeholder, is this the Huffman table?", random_rgba()],
+                        [429, 430, "FFC4 tag (Huffman Table).", random_rgba()],
+
+                        [462, 463, "FFC4 tag (Huffman Table).", random_rgba()],
+                        [629, 631, "<h2>Footer</h2> <br> The footer is normally referred to as 'EndOfImage'. ", random_rgba()]
+                        ];
+                    
+                    var lineshift = parseInt(document.getElementById("hexWidth").value);
+
+                    const hexGrid = new HexGrid(hexNums, lineshift, indexInfo, hexNums);
+                    hexGrid.render();
+
+                    function showInfo(index) {
+                        hexGrid.showInfo(index);
+                        const lineshift = parseInt(document.getElementById("hexWidth").value);
+                    }
+
+
+</script>
+            </div>
+        </div>
+    </body>
+</html>

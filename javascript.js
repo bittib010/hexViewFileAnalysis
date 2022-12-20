@@ -6,7 +6,7 @@ class HexGrid {
         this.ASCIIHex = ASCIIHex;
     }
 
-    updateLineshift(newWidth){
+    updateLineshift(newWidth) {
         this.lineshift = newWidth;
     }
 
@@ -24,6 +24,15 @@ class HexGrid {
 
     render() {
         this.hexNums = this.hexNums.split(" ");
+
+
+        function random_rgba() {
+            var o = Math.round, r = Math.random, s = 255;
+            return 'rgba(' + o(r() * s) + ',' + o(r() * s) + ',' + o(r() * s) + ',' + (0.2 + (r() * 0.3)).toFixed(1) + ')';
+          }
+          
+
+
 
         /* Beginning ASCII table */
         var ASCIITable = ' !"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~';
@@ -44,7 +53,7 @@ class HexGrid {
 
         document.write('<table class="col-2">');
         for (let i = 0; i < this.ASCIIHex.length; i += this.lineshift) {
-            document.write('<tr class="table-light">');
+            document.write('<tr>');
             for (let j = i; j < i + this.lineshift; j++) {
                 if (this.ASCIIHex[j] == null) {
                     this.ASCIIHex[j] = "";
@@ -54,6 +63,10 @@ class HexGrid {
                 for (let k = 0; k < this.indexInfo.length; k++) {
                     if (j >= this.indexInfo[k][0] && j <= this.indexInfo[k][1]) {
                         bgColor = this.indexInfo[k][3];
+                        /*if (this.indexInfo[k][3] == null) {
+                            // Random color if non is set
+                            bgColor = random_rgba();
+                        }*/
                         break;
                     }
                 }
@@ -68,7 +81,7 @@ class HexGrid {
 
         document.write('<table class="col-1">');
         for (let i = 0; i < this.hexNums.length; i += this.lineshift) {
-            document.write('<tr class="table-light">');
+            document.write('<tr>');
             for (let j = i; j < i + this.lineshift; j++) {
                 if (this.hexNums[j] == null) {
                     this.hexNums[j] = "";
@@ -78,6 +91,10 @@ class HexGrid {
                 for (let k = 0; k < this.indexInfo.length; k++) {
                     if (j >= this.indexInfo[k][0] && j <= this.indexInfo[k][1]) {
                         bgColor = this.indexInfo[k][3];
+                        /*if (this.indexInfo[k][3] == null) {
+                            // Random color if non is set
+                            bgColor = random_rgba();
+                        }*/
                         break;
                     }
                 }
@@ -118,6 +135,7 @@ function getSelectionHtml() {
 }
 
 function highLow(arr) {
+    // Return the highest and lowest number in an array
     return [Math.max(...arr), Math.min(...arr)];
 }
 

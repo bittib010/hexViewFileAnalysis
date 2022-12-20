@@ -1,73 +1,72 @@
-table,
-:nth-child(4) {
-    border-spacing: 1rem;
+.popup {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 10;
+  pointer-events: none;
 }
 
-table {
-    border: 2px solid rgba(200, 200, 200, 0.4);
+.popup-inner {
+  position: absolute;
+  top: 150%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 1000px;
+  background-color: #fef;
+  border-radius: 8px;
+  box-shadow: 0 8px 10px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
 }
 
-#info-frame {
-    border: 2px solid rgba(200, 200, 200, 0.4);
+.popup-content {
+  padding: 5px;
+  text-align: left;
+}
+
+.popup-close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: #333;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  background-color: transparent;
+  border: 0;
+  outline: 0;
+}
+
+table.col-1 {
+  border-right: 2px solid black;
+  border-left: 2px solid black;
 
 }
 
-div.info-frame{
-    position: -webkit-sticky;
-    position: sticky;
-    top: 0;
-    white-space: pre-wrap;
-    white-space: -moz-pre-wrap;
-    white-space: -pre-wrap;
-    white-space: -o-pre-wrap;
-    word-wrap: break-word;
-    display: flex;
-    justify-content: space-around;
-    align-items: flex-start;
-    bottom: 1rem;
-    align-self: flex-end;
-  }
+#tableBoss{
+  border: 4px solid black;
+  border-radius: 12px;
+}
 
+button.popup-trigger{
+  border-radius: 12px;
+}
 
-  .popup {
-    position: fixed;
-    top: 50;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 999;
-    display: none;
-  }
-  
-  .popup-inner {
-    /* Text-box background*/
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 80%;
-    max-width: 600px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-    overflow: hidden;
-  }
-  
-  .popup-content {
-    padding: 20px;
-  }
-  
-  .popup-close-button {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    color: #333;
-    font-size: 20px;
-    font-weight: bold;
-    cursor: pointer;
-    background-color: transparent;
-    border: 0;
-    outline: 0;
-  }
-  
+div.info-frame {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+  display: flex;
+  justify-content: space-around;
+  bottom: 1rem;
+  align-self: flex-end;
+}
